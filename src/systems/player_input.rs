@@ -12,9 +12,9 @@ pub fn player_input(
     if let Some(key) = key {
         let delta = match key {
             VirtualKeyCode::Left => Point::new(-1, 0),
-            VirtualKeyCode::Left => Point::new(1, 0),
-            VirtualKeyCode::Left => Point::new(0, -1),
-            VirtualKeyCode::Left => Point::new(0, 1),
+            VirtualKeyCode::Right => Point::new(1, 0),
+            VirtualKeyCode::Up => Point::new(0, -1),
+            VirtualKeyCode::Down => Point::new(0, 1),
             _ => Point::new(0, 0),
         };
 
