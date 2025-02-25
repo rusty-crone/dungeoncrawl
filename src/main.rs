@@ -1,5 +1,6 @@
 mod map;
 mod player;
+mod map_builder;
 
 mod prelude {
     pub use bracket_lib::prelude::*;
@@ -7,6 +8,7 @@ mod prelude {
     pub const SCREEN_HEIGHT: i32 = 50;
     pub use crate::map::*;
     pub use crate::player::*;
+    pub use crate::map_builder::*;
 }
 
 use prelude::*;
@@ -18,8 +20,10 @@ struct State {
 
 impl State {
     fn new() -> Self {
+        let mut rng = RandomNumberGenerator::new();
+        let map_builder = MapBuilder::new(&mut rng);
         Self {
-            map: Map::new(),
+            map: map_builder.map,
             player: Player::new(Point::new(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)),
         }
     }
